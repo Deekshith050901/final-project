@@ -21,16 +21,7 @@ app.use(cors({
   credentials: true
 }));
 
-mongoose.connect('mongodb://localhost:27017/project')
-  .then(() => {
-    console.log('Connected to MongoDB');
-    app.listen(PORT, () => {
-      console.log(`Server is running on http://localhost:${PORT}`);
-    });
-  })
-  .catch(err => {
-    console.error('Database connection failed', err);
-  });
+mongoose.connect("mongodb+srv://dattu050901:nuDJD1AnNFS3aOUT@projectcluster.2eu3yjg.mongodb.net/?retryWrites=true&w=majority&appName=ProjectCluster").then(console.log("database Connected"));
 
 app.use(bodyParser.json());
 app.use(session({
@@ -264,4 +255,8 @@ app.post('/logout', (req, res) => {
         return res.status(200).json({ message: "Logout successful" });
       }
     });
+});
+
+app.listen(PORT, () => {
+  console.log(`Server is running on http://localhost:${PORT}`);
 });
